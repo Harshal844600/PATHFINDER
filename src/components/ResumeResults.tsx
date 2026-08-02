@@ -65,7 +65,7 @@ export function ResumeResults({ analysis, onReset, isReadOnly = false }: { analy
           <div>
             <h3 className="text-3xl font-bold uppercase tracking-tighter mb-6">Suggested Roles</h3>
             <div className="grid grid-cols-1 gap-6">
-              {analysis.jobMatches.map((job, idx) => (
+              {analysis.jobMatches.map((job: any, idx: number) => (
                 <Card key={idx} className="border-4 hover:shadow-[8px_8px_0_0_#DFE104] transition-shadow">
                   <CardHeader className="pb-4">
                     <div className="flex justify-between items-start">
@@ -96,7 +96,7 @@ export function ResumeResults({ analysis, onReset, isReadOnly = false }: { analy
             </CardHeader>
             <CardContent className="pt-6">
               <ul className="space-y-4">
-                {analysis.resumeFeedback.map((feedback, idx) => (
+                {analysis.resumeFeedback.map((feedback: any, idx: number) => (
                   <li key={idx} className="flex gap-3 text-lg font-medium">
                     <ArrowRight className="w-6 h-6 shrink-0 text-accent" />
                     <span>{feedback}</span>

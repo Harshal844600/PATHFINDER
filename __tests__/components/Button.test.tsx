@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 import { Button } from '@/components/ui/Button'
 
-// Mock framer-motion to avoid complex animation testing issues
 vi.mock('framer-motion', () => ({
   motion: {
     button: ({ children, whileHover, whileTap, ...props }: any) => (
       <button {...props}>{children}</button>
-    )
+    ),
+    create: (Component: any) => Component
   }
 }))
 

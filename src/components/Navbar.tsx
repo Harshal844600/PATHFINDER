@@ -48,7 +48,7 @@ export async function Navbar() {
   );
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between border-b-2 border-border p-4 px-6 bg-background/80 backdrop-blur-md">
+    <nav aria-label="Main Navigation" className="sticky top-0 z-50 flex items-center justify-between border-b-2 border-border p-4 px-6 bg-background/80 backdrop-blur-md">
       {/* Logo */}
       <Link
         href="/"

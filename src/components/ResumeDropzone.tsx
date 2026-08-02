@@ -109,6 +109,52 @@ export function ResumeDropzone({
   const inputRef = useRef<HTMLInputElement>(null);
   const dragCounterRef = useRef(0); // avoids flicker from child element drag events
 
+  // ── Core processing ───────────────────────────────────────────────────────
+
+  async function processFile(file: File) {
+    if (!isAccepted(file)) {
+      setFileState({
+        status: "error",
+        name: file.name,
+        message: `Unsupported file type. Please upload a PDF, TXT, DOC, or DOCX file.`,
+      });
+      return;
+    }
+
+    setFileState({ status: "extracting", name: file.name });
+
+    try {
+      const text = await extractText(file);
+
+      if (!text || text.trim().length < 30) {
+        setFileState({
+          status: "error",
+          name: file.name,
+          message:
+            "Could not extract enough text from this file. It may be a scanned image PDF. Please paste the text manually.",
+        });
+        return;
+      }
+
+      const preview = text.slice(0, 300) + (text.length > 300 ? "…" : "");
+
+      setFileState({
+        status: "done",
+        name: file.name,
+        size: formatBytes(file.size),
+        preview,
+      });
+
+      onTextExtracted(text);
+    } catch (err: any) {
+      setFileState({
+        status: "error",
+        name: file.name,
+        message: err?.message || "Failed to read file. Please try again.",
+      });
+    }
+  }
+
   // ── Drag handlers ─────────────────────────────────────────────────────────
 
   const handleDragEnter = useCallback(
@@ -157,52 +203,6 @@ export function ResumeDropzone({
     },
     [] // eslint-disable-line react-hooks/exhaustive-deps
   );
-
-  // ── Core processing ───────────────────────────────────────────────────────
-
-  async function processFile(file: File) {
-    if (!isAccepted(file)) {
-      setFileState({
-        status: "error",
-        name: file.name,
-        message: `Unsupported file type. Please upload a PDF, TXT, DOC, or DOCX file.`,
-      });
-      return;
-    }
-
-    setFileState({ status: "extracting", name: file.name });
-
-    try {
-      const text = await extractText(file);
-
-      if (!text || text.trim().length < 30) {
-        setFileState({
-          status: "error",
-          name: file.name,
-          message:
-            "Could not extract enough text from this file. It may be a scanned image PDF. Please paste the text manually.",
-        });
-        return;
-      }
-
-      const preview = text.slice(0, 300) + (text.length > 300 ? "…" : "");
-
-      setFileState({
-        status: "done",
-        name: file.name,
-        size: formatBytes(file.size),
-        preview,
-      });
-
-      onTextExtracted(text);
-    } catch (err: any) {
-      setFileState({
-        status: "error",
-        name: file.name,
-        message: err?.message || "Failed to read file. Please try again.",
-      });
-    }
-  }
 
   // ── Paste tab handler ─────────────────────────────────────────────────────
 

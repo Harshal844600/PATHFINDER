@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import { motion, useInView, useMotionValue, type Variants } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { MarqueeBand } from "@/components/ui/MarqueeBand";
 import { ArrowRight, Compass, Brain, Map, Zap, Users, Star, TrendingUp } from "lucide-react";
@@ -92,12 +92,72 @@ const TESTIMONIALS = [
 // ─── Animation Variants (module-level = typed correctly, not recreated per render) ──
 const containerVariants: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
+  show: { transition: { staggerChildren: 0.2 } },
 };
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as any } },
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as any } },
 };
+
+// ─── Tilt Card Component ──────────────────────────────────────────────────────
+function TiltCard({ step, icon: Icon, title, desc, isLast }: { step: string; icon: any; title: string; desc: string; isLast: boolean }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top, width, height } = currentTarget.getBoundingClientRect();
+    const x = (clientX - left - width / 2) / 10;
+    const y = (clientY - top - height / 2) / 10;
+    mouseX.set(x);
+    mouseY.set(-y);
+  }
+
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
+
+  return (
+    <motion.div
+      variants={itemVariants}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX: mouseY,
+        rotateY: mouseX,
+        transformPerspective: 1000,
+      }}
+      className="card-lift relative border-2 border-border p-8 overflow-hidden group cursor-default hover:border-accent hover:shadow-[8px_8px_0_0_#DFE104] transition-colors bg-background"
+    >
+      <div style={{ transform: "translateZ(30px)" }}>
+        {/* Big number bg */}
+        <span className="absolute -bottom-6 -right-3 text-[9rem] font-black text-muted-foreground/15 leading-none group-hover:text-accent/10 transition-colors select-none">
+          {step}
+        </span>
+
+        {/* Icon */}
+        <div className="relative z-10 mb-6 w-14 h-14 border-2 border-border bg-muted flex items-center justify-center group-hover:border-accent group-hover:bg-accent group-hover:text-black transition-all">
+          <Icon className="w-6 h-6" />
+        </div>
+
+        <div className="relative z-10">
+          <h3 className="text-2xl font-bold uppercase mb-3 underline-draw">{title}</h3>
+          <p className="text-base font-medium text-muted-foreground leading-relaxed normal-case">{desc}</p>
+        </div>
+      </div>
+
+      {/* Connector arrow (not on last) */}
+      {!isLast && (
+        <div 
+          className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-accent text-black items-center justify-center border-2 border-black font-black text-sm"
+          style={{ transform: "translateZ(0px) translateY(-50%)" }}
+        >
+          →
+        </div>
+      )}
+    </motion.div>
+  );
+}
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
@@ -181,8 +241,9 @@ export default function Home() {
           <Button
             id="hero-start-btn"
             size="lg"
-            onClick={() => router.push('/signup')}
-            className="w-full sm:w-auto group text-lg h-16 px-10 shadow-[6px_6px_0_0_#DFE104] hover:shadow-[2px_2px_0_0_#DFE104] hover:translate-x-1 hover:translate-y-1 transition-all"
+            href="/signup"
+            prefetch={true}
+            className="w-full sm:w-auto group text-lg h-16 px-10 shadow-[4px_4px_0_0_#DFE104] hover:shadow-[8px_8px_0_0_#DFE104] active:shadow-[0px_0px_0_0_#DFE104] transition-shadow"
           >
             Start Discovery
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -191,8 +252,9 @@ export default function Home() {
             id="hero-login-btn"
             variant="outline"
             size="lg"
-            onClick={() => router.push('/login')}
-            className="w-full sm:w-auto text-lg h-16 px-10 border-2 bg-background/60 backdrop-blur-sm hover:bg-accent hover:text-black hover:border-accent transition-all"
+            href="/login"
+            prefetch={true}
+            className="w-full sm:w-auto text-lg h-16 px-10 border-2 bg-background/60 backdrop-blur-sm hover:bg-accent hover:text-black hover:border-accent active:bg-accent/80 transition-colors"
           >
             View Saved Paths
           </Button>
@@ -205,14 +267,16 @@ export default function Home() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="mt-12 flex flex-wrap justify-center gap-3"
         >
-          {FEATURES.map(({ icon: Icon, label }) => (
-            <span
+          {FEATURES.map(({ icon: Icon, label }, i) => (
+            <motion.span
               key={label}
-              className="flex items-center gap-2 border border-border/60 bg-muted/40 backdrop-blur-sm px-4 py-2 text-xs font-bold uppercase text-muted-foreground hover:border-accent hover:text-accent transition-colors"
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+              className="flex items-center gap-2 border border-border/60 bg-muted/40 backdrop-blur-sm px-4 py-2 text-xs font-bold uppercase text-muted-foreground hover:border-accent hover:text-accent transition-colors cursor-default"
             >
               <Icon className="w-3.5 h-3.5" />
               {label}
-            </span>
+            </motion.span>
           ))}
         </motion.div>
 
@@ -297,35 +361,14 @@ export default function Home() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {STEPS.map(({ step, icon: Icon, title, desc }, i) => (
-            <motion.div
-              key={step}
-              variants={itemVariants}
-              className="card-lift relative border-2 border-border p-8 overflow-hidden group cursor-default
-                hover:border-accent hover:shadow-[8px_8px_0_0_#DFE104] transition-all"
-            >
-              {/* Big number bg */}
-              <span className="absolute -bottom-6 -right-3 text-[9rem] font-black text-muted-foreground/15 leading-none group-hover:text-accent/10 transition-colors select-none">
-                {step}
-              </span>
-
-              {/* Icon */}
-              <div className="relative z-10 mb-6 w-14 h-14 border-2 border-border bg-muted flex items-center justify-center group-hover:border-accent group-hover:bg-accent group-hover:text-black transition-all">
-                <Icon className="w-6 h-6" />
-              </div>
-
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold uppercase mb-3 underline-draw">{title}</h3>
-                <p className="text-base font-medium text-muted-foreground leading-relaxed normal-case">{desc}</p>
-              </div>
-
-              {/* Connector arrow (not on last) */}
-              {i < STEPS.length - 1 && (
-                <div className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20
-                  w-8 h-8 bg-accent text-black items-center justify-center border-2 border-black font-black text-sm">
-                  →
-                </div>
-              )}
-            </motion.div>
+            <TiltCard 
+              key={step} 
+              step={step} 
+              icon={Icon} 
+              title={title} 
+              desc={desc} 
+              isLast={i === STEPS.length - 1} 
+            />
           ))}
         </motion.div>
       </section>
@@ -414,8 +457,9 @@ export default function Home() {
             <Button
               id="cta-start-btn"
               size="lg"
-              onClick={() => router.push('/signup')}
-              className="w-full sm:w-auto group text-xl h-20 px-8 md:px-16 shadow-[8px_8px_0_0_#DFE104] hover:shadow-[2px_2px_0_0_#DFE104] hover:translate-x-1.5 hover:translate-y-1.5 transition-all"
+              href="/signup"
+              prefetch={true}
+              className="w-full sm:w-auto group text-xl h-20 px-8 md:px-16 shadow-[6px_6px_0_0_#DFE104] hover:shadow-[12px_12px_0_0_#DFE104] active:shadow-[0px_0px_0_0_#DFE104] transition-shadow"
             >
               Discover My Path
               <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />

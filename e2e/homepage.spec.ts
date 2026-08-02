@@ -7,8 +7,8 @@ test('homepage has title and main elements', async ({ page }) => {
   await expect(page).toHaveTitle(/PathFinder/);
 
   // Expect the main heading to be visible
-  await expect(page.getByRole('heading', { name: /YOUR CAREER PATH ISN'T A LADDER/i })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /PathFinder/i, level: 1 })).toBeVisible();
 
-  // Expect the "GET STARTED" button to be visible
-  await expect(page.getByRole('link', { name: /GET STARTED/i })).toBeVisible();
+  // Expect the "Start Discovery" link to be visible
+  await expect(page.getByRole('link', { name: /Start Discovery/i })).toBeVisible();
 });

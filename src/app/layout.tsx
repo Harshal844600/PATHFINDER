@@ -18,8 +18,32 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "PathFinder",
-  description: "Career path discovery tool for students and early-career professionals.",
+  metadataBase: new URL("https://pathfinder.com"),
+  title: "PathFinder | AI-Powered Career Discovery",
+  description: "Career path discovery tool for students and early-career professionals. Map your skills to realistic paths with curated playlists from India's best educators.",
+  keywords: ["career", "discovery", "students", "learning", "tech", "jobs"],
+  authors: [{ name: "PathFinder Team" }],
+  openGraph: {
+    title: "PathFinder | AI-Powered Career Discovery",
+    description: "Map your skills to realistic career paths in minutes. Get personalized learning roadmaps with curated content.",
+    url: "https://pathfinder.com", // Replace with your actual domain
+    siteName: "PathFinder",
+    images: [
+      {
+        url: "/logo.png", // Ideally, use a full-width 1200x630 OG image
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PathFinder | Career Discovery",
+    description: "Map your skills to realistic paths with curated playlists.",
+    images: ["/logo.png"],
+  },
   icons: {
     icon: [
       { url: "/logo.png", type: "image/png" },

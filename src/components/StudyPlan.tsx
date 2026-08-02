@@ -35,6 +35,7 @@ interface StudyPlanProps {
 // ─── Creator Color Map ───────────────────────────────────────────────────────
 
 const CREATOR_COLORS: Record<string, { bg: string; text: string; border: string }> = {
+  // Existing
   "Code With Harry":       { bg: "#1a1a2e", text: "#e94560",  border: "#e94560"  },
   "Love Babbar":           { bg: "#0f3460", text: "#ffffff",  border: "#e94560"  },
   "Coder Army":            { bg: "#16213e", text: "#0f3460",  border: "#533483"  },
@@ -44,6 +45,23 @@ const CREATOR_COLORS: Record<string, { bg: string; text: string; border: string 
   "Thapa Technical":       { bg: "#d62828", text: "#ffffff",  border: "#f77f00"  },
   "Chai aur Code":         { bg: "#6b4226", text: "#ffd700",  border: "#c8963e"  },
   "Gate Smashers":         { bg: "#1b4332", text: "#ffffff",  border: "#40916c"  },
+  
+  // IT & Engineering Additions
+  "Jenny's Lectures":      { bg: "#4a1c40", text: "#ffb6c1",  border: "#ff69b4"  },
+  "Neso Academy":          { bg: "#301934", text: "#e0b0ff",  border: "#9932cc"  },
+  "Telusko":               { bg: "#192841", text: "#4da6ff",  border: "#0066cc"  },
+  "Gajendra Purohit":      { bg: "#3a2a1a", text: "#ffdead",  border: "#d2691e"  },
+  "NPTEL":                 { bg: "#1a2a3a", text: "#add8e6",  border: "#4682b4"  },
+
+  // Exams & Commerce
+  "Physics Wallah":        { bg: "#2a1a1a", text: "#ff7f50",  border: "#ff4500"  },
+  "Unacademy JEE":         { bg: "#1a3a2a", text: "#98fb98",  border: "#32cd32"  },
+  "Vedantu":               { bg: "#4a3a1a", text: "#ffebcd",  border: "#ffa500"  },
+  "Drishti IAS":           { bg: "#1a1a1a", text: "#d3d3d3",  border: "#a9a9a9"  },
+  "StudyIQ IAS":           { bg: "#2f4f4f", text: "#e0ffff",  border: "#00ced1"  },
+  "SSC Maker":             { bg: "#4b0082", text: "#dda0dd",  border: "#8a2be2"  },
+  "Rajat Arora":           { bg: "#00008b", text: "#87ceeb",  border: "#4169e1"  },
+  "CA Wallah":             { bg: "#8b0000", text: "#ffb6c1",  border: "#dc143c"  },
 };
 
 const LEVEL_COLORS: Record<string, string> = {
@@ -60,11 +78,11 @@ export function StudyPlan({ studyPlan }: StudyPlanProps) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    setTimeout(() => setIsMounted(true), 0);
     try {
       const saved = localStorage.getItem("pathfinder_progress");
       if (saved) {
-        setCompletedTasks(new Set(JSON.parse(saved)));
+        setTimeout(() => setCompletedTasks(new Set(JSON.parse(saved))), 0);
       }
     } catch (e) {
       console.error("Failed to parse progress from local storage");

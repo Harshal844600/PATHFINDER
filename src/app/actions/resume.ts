@@ -10,7 +10,7 @@ export async function analyzeResume(resumeText: string): Promise<{ error?: strin
   try {
     const validation = resumeSchema.safeParse(resumeText);
     if (!validation.success) {
-      return { error: validation.error.errors[0].message };
+      return { error: validation.error.issues[0].message };
     }
 
     const supabase = await createClient();

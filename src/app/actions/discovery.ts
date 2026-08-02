@@ -5,6 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 import { z } from "zod";
 import crypto from "crypto";
 import { getRelevantPlaylistsForPath } from "@/lib/curatedPlaylists";
+import Groq from "groq-sdk";
 
 // ─── Validation ──────────────────────────────────────────────────────────────
 

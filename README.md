@@ -1,79 +1,68 @@
-# PathFinder: AI-Powered Career Architect 🧭
+# 🚀 PathFinder
 
-<div align="center">
-  <img src="public/favicon.svg" alt="PathFinder Logo" width="120" />
-  <br/>
-  <h3>From Zero to Hired. Stop wandering, start building.</h3>
-</div>
+PathFinder is an AI-powered career discovery and roadmap generation platform designed specifically for students and early-career professionals. Skip the generic advice and get a tailored, step-by-step career roadmap curated with real Indian creator playlists, all by answering just a few questions!
 
----
+## ✨ Features
+- **AI-Powered Matching:** Analyzes your current skills, interests, and timeline using Groq (Llama 3) to find your strongest career paths.
+- **Week-by-Week Roadmaps:** Highly specific, actionable step-by-step guides to bridge the gap between where you are and your dream career.
+- **Curated Indian Creator Playlists:** Integrates directly with YouTube playlists from top Indian tech creators (e.g., Harkirat Singh, Striver, Hitesh Choudhary, Piyush Garg) so you know exactly *what* to study.
+- **Resume Analysis:** Drag and drop your PDF resume for instant AI breakdown and skill extraction.
+- **Modern Tech Stack:** Built with Next.js 16 (Turbopack) and styled with Tailwind CSS + Framer Motion for a stunning Neobrutalist UI.
+- **Secure Authentication:** Fully integrated with Supabase Auth (Email/Password & Google OAuth).
 
-## 🚀 Overview
+## 🛠️ Tech Stack
+- **Frontend:** Next.js 16 (App Router), React 19, Tailwind CSS, Framer Motion, shadcn/ui.
+- **Backend/BaaS:** Supabase (PostgreSQL, Auth, SSR Cookies).
+- **AI Integration:** Groq SDK (Llama 3 70B for fast, highly-reasoned AI responses).
+- **Testing:** Playwright (E2E), Vitest & React Testing Library (Unit).
+- **PDF Parsing:** PDF.js (Client-side parsing).
 
-PathFinder is an enterprise-grade, AI-driven SaaS application designed to eliminate career stagnation. By leveraging advanced Large Language Models (LLMs) via the **Groq API**, PathFinder analyzes a user's current situation, skills, and goals to generate a highly accurate, week-by-week study plan. 
+## 🚀 Getting Started
 
-What sets PathFinder apart is its **100% Accurate Content Engine**. Instead of relying on AI hallucinations for study materials, the backend seamlessly matches users to a curated vector-style database of the world's most highly regarded programming content (e.g., *freeCodeCamp, MIT OpenCourseWare, CS50, Fireship*), bridging the gap with dynamic search intent for infinite edge cases.
+### Prerequisites
+- Node.js (v18+)
+- A Supabase project (for Auth and Database)
+- A Groq API Key
 
-### ✨ Key Features
-- **Brutalist UI/UX:** A stunning, high-contrast aesthetic built with Tailwind CSS and Framer Motion micro-animations that feels instantly premium.
-- **Cost-Eliminating Caching Engine:** Intelligent Supabase integration hashes user contexts to cache identical AI generations, dropping latency to 0.1s and reducing API costs to absolute zero for repeat queries.
-- **Zero Dead Links:** The AI is strictly bound by a semantic matching engine, dynamically constructing verified YouTube search links for niche topics to guarantee 100% accurate click-throughs.
-- **Interactive Retention (Stickiness):** Users can track their weekly progress via stateful checklists bound to local storage, driving daily active engagement.
-- **Global Error Resilience:** Brutalist-themed error boundaries seamlessly intercept backend or AI-provider crashes, giving the illusion of 100% uptime.
+### Installation
 
----
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Harshal844600/PATHFINDER.git
+   cd PATHFINDER
+   ```
 
-## 🛠️ Technology Stack
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-| Architecture Layer | Technology |
-| :--- | :--- |
-| **Framework** | Next.js 15 (App Router, Server Actions) |
-| **Styling** | Tailwind CSS v4, Framer Motion, Lucide React |
-| **Authentication & DB** | Supabase (PostgreSQL, Auth, RLS) |
-| **Artificial Intelligence**| Groq API (LLaMA-3 70B/8B) |
-| **Form Validation** | Zod |
+3. **Set up environment variables:**
+   Create a `.env.local` file in the root directory and add your keys:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   GROQ_API_KEY=your_groq_api_key
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+   ```
 
----
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-## ⚙️ Local Development Setup
+## 🧪 Testing
+The project maintains a high standard of code quality with robust testing.
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/Harshal844600/PATH-FINDER.git
-cd PATH-FINDER
-```
+- **Run Unit Tests (Vitest):**
+  ```bash
+  npm run test
+  ```
+- **Run E2E Tests (Playwright):**
+  ```bash
+  npm run test:e2e
+  ```
 
-### 2. Install dependencies
-```bash
-npm install
-```
-
-### 3. Environment Variables
-Create a `.env` file in the root of the project and add the following keys:
-```bash
-# Groq API for lightning-fast AI Generation
-GROQ_API_KEY=your_groq_api_key_here
-
-# Supabase details for Auth, Caching, and Progress Saving
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url_here
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key_here
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
-
-# Secret used to sign JWT cookies
-JWT_SECRET=your_super_secret_string
-```
-
-### 4. Supabase Database Setup
-Navigate to the `supabase/migrations/` folder and run the `20260728000000_init_tables.sql` file in your Supabase SQL Editor. This will generate the necessary `ai_cache` and `saved_paths` tables, complete with Row Level Security (RLS).
-
-### 5. Start the development server
-```bash
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) to view the application.
-
----
-
-## 🛡️ License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🌐 Deployment
+This project is optimized for deployment on Vercel. Connect your repository, add the environment variables, and hit deploy! Remember to update your `NEXT_PUBLIC_SITE_URL` in both Vercel and your Google OAuth/Supabase configurations.

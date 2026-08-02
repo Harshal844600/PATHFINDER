@@ -347,6 +347,182 @@ export const CURATED_PLAYLISTS: CreatorPlaylist[] = [
     durationHrs: 15,
     language: "Hinglish",
   },
+
+  // ─── Harkirat Singh ───────────────────────────────────────────────────────────
+  {
+    creator: "Harkirat Singh",
+    channelHandle: "@harkirat1",
+    topic: "Web3 and Advanced Full Stack",
+    tags: ["web3", "blockchain", "solidity", "fullstack", "advanced", "devops", "kubernetes"],
+    url: "https://www.youtube.com/@harkirat1/playlists",
+    level: "Advanced",
+    durationHrs: 25,
+    language: "Hinglish",
+  },
+
+  // ─── Hitesh Choudhary ───────────────────────────────────────────────────────
+  {
+    creator: "Hitesh Choudhary",
+    channelHandle: "@HiteshChoudharydotcom",
+    topic: "Next.js & React Native App Development",
+    tags: ["nextjs", "react", "react native", "frontend", "mobile", "app development"],
+    url: "https://www.youtube.com/@HiteshChoudharydotcom/playlists",
+    level: "Intermediate",
+    durationHrs: 30,
+    language: "Hinglish",
+  },
+
+  // ─── Piyush Garg ────────────────────────────────────────────────────────────
+  {
+    creator: "Piyush Garg",
+    channelHandle: "@piyushgargdev",
+    topic: "Node.js & Backend Systems Engineering",
+    tags: ["nodejs", "backend", "docker", "redis", "webrtc", "websockets", "software engineering", "architecture"],
+    url: "https://www.youtube.com/@piyushgargdev/playlists",
+    level: "Advanced",
+    durationHrs: 20,
+    language: "Hinglish",
+  },
+  
+  // ─── Core IT & Computer Science ──────────────────────────────────────────────
+  {
+    creator: "Jenny's Lectures",
+    channelHandle: "@JennyslecturesCSIT",
+    topic: "C Programming & Data Structures",
+    tags: ["c", "c++", "data structures", "algorithms", "gate", "university exam"],
+    url: "https://www.youtube.com/@JennyslecturesCSIT/playlists",
+    level: "Beginner",
+    durationHrs: 45,
+    language: "Hinglish",
+  },
+  {
+    creator: "Neso Academy",
+    channelHandle: "@nesoacademy",
+    topic: "Digital Electronics & Theory of Computation",
+    tags: ["digital electronics", "toc", "compiler design", "os", "gate", "btech", "engineering"],
+    url: "https://www.youtube.com/@nesoacademy/playlists",
+    level: "Intermediate",
+    durationHrs: 50,
+    language: "English",
+  },
+  {
+    creator: "Telusko",
+    channelHandle: "@Telusko",
+    topic: "Java & Spring Boot Full Course",
+    tags: ["java", "spring boot", "backend", "web development", "enterprise", "software engineering"],
+    url: "https://www.youtube.com/@Telusko/playlists",
+    level: "Intermediate",
+    durationHrs: 35,
+    language: "Hinglish",
+  },
+
+  // ─── Engineering & Mathematics ──────────────────────────────────────────────
+  {
+    creator: "Gajendra Purohit",
+    channelHandle: "@GajendraPurohit",
+    topic: "Engineering Mathematics & GATE Prep",
+    tags: ["mathematics", "gate", "engineering mathematics", "btech", "calculus", "algebra"],
+    url: "https://www.youtube.com/@GajendraPurohit/playlists",
+    level: "Advanced",
+    durationHrs: 60,
+    language: "Hinglish",
+  },
+  {
+    creator: "NPTEL",
+    channelHandle: "@nptelhrd",
+    topic: "Core Engineering Subjects",
+    tags: ["mechanical", "civil", "electrical", "electronics", "chemical", "engineering", "btech"],
+    url: "https://www.youtube.com/@nptelhrd/playlists",
+    level: "Advanced",
+    durationHrs: 120,
+    language: "English",
+  },
+
+  // ─── Medical & Engineering Entrance (NEET / JEE) ───────────────────────────
+  {
+    creator: "Physics Wallah",
+    channelHandle: "@PhysicsWallah",
+    topic: "JEE/NEET Physics & Chemistry",
+    tags: ["jee", "neet", "physics", "chemistry", "entrance exam", "class 11", "class 12"],
+    url: "https://www.youtube.com/@PhysicsWallah/playlists",
+    level: "Beginner",
+    durationHrs: 150,
+    language: "Hinglish",
+  },
+  {
+    creator: "Unacademy JEE",
+    channelHandle: "@UnacademyJEE",
+    topic: "JEE Mains & Advanced",
+    tags: ["jee", "mains", "advanced", "engineering entrance", "maths", "physics", "chemistry"],
+    url: "https://www.youtube.com/@UnacademyJEE/playlists",
+    level: "Advanced",
+    durationHrs: 200,
+    language: "Hinglish",
+  },
+  {
+    creator: "Vedantu",
+    channelHandle: "@Vedantu910",
+    topic: "Board Exams & NEET Preparation",
+    tags: ["neet", "boards", "class 10", "class 12", "biology", "medical entrance"],
+    url: "https://www.youtube.com/@Vedantu910/playlists",
+    level: "Intermediate",
+    durationHrs: 100,
+    language: "Hinglish",
+  },
+
+  // ─── Government & Civil Services (UPSC / SSC / Banking) ────────────────────
+  {
+    creator: "Drishti IAS",
+    channelHandle: "@DrishtiIASvideos",
+    topic: "UPSC CSE Preparation",
+    tags: ["upsc", "ias", "civil services", "polity", "history", "ethics", "current affairs"],
+    url: "https://www.youtube.com/@DrishtiIASvideos/playlists",
+    level: "Advanced",
+    durationHrs: 300,
+    language: "Hindi",
+  },
+  {
+    creator: "StudyIQ IAS",
+    channelHandle: "@StudyIQeducation",
+    topic: "Current Affairs & General Studies",
+    tags: ["upsc", "pcs", "current affairs", "general studies", "government jobs"],
+    url: "https://www.youtube.com/@StudyIQeducation/playlists",
+    level: "Intermediate",
+    durationHrs: 150,
+    language: "Hinglish",
+  },
+  {
+    creator: "SSC Maker",
+    channelHandle: "@SSCMaker",
+    topic: "SSC CGL & Banking Preparation",
+    tags: ["ssc", "cgl", "banking", "ibps", "quantitative aptitude", "reasoning", "government jobs"],
+    url: "https://www.youtube.com/@SSCMaker/playlists",
+    level: "Beginner",
+    durationHrs: 80,
+    language: "Hindi",
+  },
+
+  // ─── Commerce & Finance (CA / B.Com) ─────────────────────────────────────────
+  {
+    creator: "Rajat Arora",
+    channelHandle: "@RajatAroraOfficial",
+    topic: "Accountancy & Economics",
+    tags: ["commerce", "bcom", "accountancy", "economics", "business studies", "class 12"],
+    url: "https://www.youtube.com/@RajatAroraOfficial/playlists",
+    level: "Beginner",
+    durationHrs: 60,
+    language: "Hinglish",
+  },
+  {
+    creator: "CA Wallah",
+    channelHandle: "@CAWallah",
+    topic: "CA Foundation & Finance",
+    tags: ["ca", "chartered accountant", "finance", "foundation", "taxation"],
+    url: "https://www.youtube.com/@CAWallah/playlists",
+    level: "Advanced",
+    durationHrs: 120,
+    language: "Hinglish",
+  }
 ];
 
 /**

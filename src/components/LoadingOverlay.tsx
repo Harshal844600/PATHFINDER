@@ -23,7 +23,7 @@ export function LoadingOverlay({ visible }: LoadingOverlayProps) {
   // Cycle through stages every 3.5s while visible
   useEffect(() => {
     if (!visible) {
-      setStageIdx(0);
+      setTimeout(() => setStageIdx(0), 0);
       return;
     }
     const interval = setInterval(() => {
