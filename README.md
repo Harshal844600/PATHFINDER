@@ -72,6 +72,50 @@ Drag and drop your PDF resume for an instant AI breakdown and skill extraction s
 
 <br />
 
+## 🧠 System Architecture
+
+```mermaid
+graph TD
+    A[User (Student/Professional)] -->|Signs Up via OAuth| B(Next.js Client)
+    B -->|Provides Profile Data| C{Groq LLM Engine}
+    B -->|Uploads PDF Resume| D[PDF.js Client-Side Parser]
+    D -->|Extracted Text| C
+    C -->|Llama 3 70B Analysis| E[AI Career Roadmap & JSON Match]
+    E --> F[Curated Indian Creator Playlists]
+    F -->|Displays Results| B
+    B -->|Saves Roadmap| G[(Supabase PostgreSQL)]
+    
+    style A fill:#DFE104,stroke:#000,stroke-width:2px,color:#000
+    style B fill:#000,stroke:#DFE104,stroke-width:2px,color:#fff
+    style C fill:#1a1a1a,stroke:#DFE104,stroke-width:2px,color:#fff
+    style D fill:#1a1a1a,stroke:#DFE104,stroke-width:2px,color:#fff
+    style E fill:#000,stroke:#DFE104,stroke-width:2px,color:#fff
+    style F fill:#DFE104,stroke:#000,stroke-width:2px,color:#000
+    style G fill:#3ECF8E,stroke:#000,stroke-width:2px,color:#000
+```
+
+<br />
+
+## 📂 Project Structure
+
+```text
+PATHFINDER/
+├── 📁 __tests__/              # Vitest Unit Tests
+├── 📁 e2e/                    # Playwright E2E Tests
+├── 📁 src/
+│   ├── 📁 app/                # Next.js App Router (Pages & API Routes)
+│   │   ├── 📁 actions/        # Server Actions (Auth, Discovery, Resume)
+│   │   └── 📁 auth/           # OAuth Callback Handlers
+│   ├── 📁 components/         # Reusable React Components (Framer Motion)
+│   │   └── 📁 ui/             # Shadcn-like UI primitives (Buttons, Toasts)
+│   ├── 📁 lib/                # Utilities & Curated Playlists DB
+│   └── 📁 utils/              # Supabase Client & Proxy configuration
+├── 📄 package.json            # Dependencies & Scripts
+└── 📄 tailwind.config.ts      # Neobrutalist Theme Configuration
+```
+
+<br />
+
 ## 🛠️ Architecture & Tech Stack
 
 | Category | Technology | Description |
