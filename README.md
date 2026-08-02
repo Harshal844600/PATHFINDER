@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=DFE104&height=250&section=header&text=PathFinder&fontSize=90&fontAlignY=38&desc=AI-Powered%20Career%20Discovery&descAlignY=51&descAlign=62&fontColor=000000" alt="PathFinder Banner" />
+  <img src="https://capsule-render.vercel.app/api?type=cylinder&color=gradient&customColorList=0:00E5FF,100:7000FF&height=250&section=header&text=PathFinder&fontSize=90&fontAlignY=38&desc=AI-Powered%20Career%20Discovery&descAlignY=51&descAlign=62&fontColor=ffffff&animation=twinkling" alt="PathFinder Banner" />
 
   <br />
   
   <a href="https://github.com/Harshal844600/PATHFINDER">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=DFE104&center=true&vCenter=true&width=435&lines=Find+Your+True+Calling;Stop+Guessing.+Start+Building;Powered+by+Llama3+%26+Next.js" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=00E5FF&center=true&vCenter=true&width=435&lines=Find+Your+True+Calling;Stop+Guessing.+Start+Building;Powered+by+Llama3+%26+Next.js" alt="Typing SVG" />
   </a>
 
   <br />
