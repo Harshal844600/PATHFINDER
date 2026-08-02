@@ -8,6 +8,11 @@
   </a>
 
   <br />
+  <br />
+
+  <img src="assets/banner-animated.svg" alt="Animated Data Flow" width="800" />
+
+  <br />
 
   <!-- Badges -->
   <p>

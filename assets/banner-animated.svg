@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%">
+  <style>
+    @keyframes moveRight {
+      from { transform: translateX(0); }
+      to { transform: translateX(40px); }
+    }
+    @keyframes glitch {
+      0% { transform: translate(0) }
+      20% { transform: translate(-2px, 2px) }
+      40% { transform: translate(-2px, -2px) }
+      60% { transform: translate(2px, 2px) }
+      80% { transform: translate(2px, -2px) }
+      100% { transform: translate(0) }
+    }
+    @keyframes pulseShadow {
+      0% { filter: drop-shadow(0px 0px 0px #DFE104); }
+      50% { filter: drop-shadow(6px 6px 0px #DFE104); }
+      100% { filter: drop-shadow(0px 0px 0px #DFE104); }
+    }
+    @keyframes dash {
+      to { stroke-dashoffset: -40; }
+    }
+
+    .bg { fill: transparent; }
+    
+    .node-box {
+      fill: #ffffff;
+      stroke: #000000;
+      stroke-width: 4;
+      animation: pulseShadow 2s infinite ease-in-out;
+    }
+    
+    .node-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      fill: #000000;
+      text-transform: uppercase;
+    }
+
+    .arrow-line {
+      stroke: #000000;
+      stroke-width: 6;
+      stroke-dasharray: 10 10;
+      animation: dash 1s linear infinite;
+    }
+
+    .glitch-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      fill: #DFE104;
+      stroke: #000000;
+      stroke-width: 2;
+      animation: glitch 3s infinite;
+    }
+  </style>
+
+  <rect class="bg" width="100%" height="100%" />
+
+  <!-- Left: The User -->
+  <g transform="translate(100, 100)">
+    <rect class="node-box" x="-60" y="-40" width="120" height="80" />
+    <text class="node-text" x="-35" y="5">USER</text>
+  </g>
+
+  <!-- Connecting Line 1 -->
+  <line class="arrow-line" x1="160" y1="100" x2="350" y2="100" />
+  
+  <polygon points="340,90 360,100 340,110" fill="#000000" />
+
+  <!-- Center: Groq AI -->
+  <g transform="translate(420, 100)">
+    <!-- Neobrutalist offset shadow -->
+    <rect x="-70" y="-40" width="140" height="80" fill="#DFE104" transform="translate(8, 8)" />
+    <rect fill="#ffffff" stroke="#000000" stroke-width="4" x="-70" y="-40" width="140" height="80" />
+    <text class="node-text" x="-45" y="-5">GROQ</text>
+    <text class="node-text" x="-50" y="20" font-size="14px">LLAMA 3</text>
+  </g>
+
+  <!-- Connecting Line 2 -->
+  <line class="arrow-line" x1="490" y1="100" x2="720" y2="100" />
+  <polygon points="710,90 730,100 710,110" fill="#000000" />
+
+  <!-- Right: The Roadmap -->
+  <g transform="translate(820, 100)">
+    <rect class="node-box" x="-80" y="-40" width="160" height="80" />
+    <text class="node-text" x="-55" y="5">ROADMAP</text>
+  </g>
+</svg>
