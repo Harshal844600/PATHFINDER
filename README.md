@@ -1,6 +1,8 @@
 <div align="center">
   <h1>PathFinder</h1>
   <p><b>An AI-Powered Career Discovery & Roadmap Generation Platform</b></p>
+  
+  <p>🚀 <b>Live Demo:</b> <a href="https://pathfinder-delta-liart.vercel.app">https://pathfinder-delta-liart.vercel.app</a></p>
 
   <p>
     <img src="https://img.shields.io/badge/Next.js-16+-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" />
